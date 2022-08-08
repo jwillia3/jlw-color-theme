@@ -1,0 +1,61 @@
+{
+  "name": "jlw-color-theme",
+  "displayName": "jlw-color-theme",
+  "description": "Jerry",
+  "license": "MIT",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "keyword": [
+    "theme",
+    "themes",
+    "light"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jwillia3/jlw-color-theme"
+   },
+  "contributes": {
+    "themes": [
+      {
+        "label": "Jerry Light",
+        "uiTheme": "vs",
+        "path": "./themes/jlw-light-color-theme.json"
+      },
+      {
+        "label": "Jerry Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/jlw-dark-color-theme.json"
+      },
+      {
+        "label": "Jerry Dust",
+        "uiTheme": "vs",
+        "path": "./themes/jlw-dust-color-theme.json"
+      },
+      {
+        "label": "Jerry Light (Colored Vars)",
+        "uiTheme": "vs",
+        "path": "./themes/jlw-light-colored-vars-color-theme.json"
+      },
+      {
+        "label": "Jerry Dark (Colored Vars)",
+        "uiTheme": "vs-dark",
+        "path": "./themes/jlw-dark-colored-vars-color-theme.json"
+      },
+      {
+        "label": "Jerry Dust (Colored Vars)",
+        "uiTheme": "vs",
+        "path": "./themes/jlw-dust-colored-vars-color-theme.json"
+      }
+    ]
+  },
+  "scripts": {
+    "build": "node src/index.js",
+    "clean": "rm -rf themes",
+    "package": "vsce package"
+  }
+}
