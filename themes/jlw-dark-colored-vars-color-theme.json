@@ -3,8 +3,12 @@
     "colors": {
         "editor.background": "#333",
         "editor.foreground": "#aaa",
-        "editorCursor.foreground": "#733",
+        "editorLineNumber.foreground": "#aaa",
+        "editor.lineHighlightBackground": "#444",
+        "editorCursor.foreground": "#958",
         "terminalCursor.foreground": "#733",
+        "terminal.background": "#333",
+        "terminal.foreground": "#aaa",
         "terminal.ansiBlack": "#333",
         "terminal.ansiBlue": "#258",
         "terminal.ansiGreen": "#575",
@@ -21,7 +25,17 @@
         "terminal.ansiBrightMagenta": "#958",
         "terminal.ansiBrightYellow": "#b73",
         "terminal.ansiBrightWhite": "#eee",
-        "editorIndentGuide.background": "#aaa"
+        "editorIndentGuide.background": "#aaa",
+        "widget.shadow": "#733",
+        "editorGroupHeader.tabsBorder": "#aaa",
+        "tab.activeBackground": "#aaa",
+        "tab.border": "#aaa",
+        "editorBracketHighlight.foreground1": "#258",
+        "editorBracketHighlight.foreground2": "#575",
+        "editorBracketHighlight.foreground3": "#39a",
+        "editorBracketHighlight.foreground4": "#733",
+        "editorBracketHighlight.foreground5": "#958",
+        "editorBracketHighlight.foreground6": "#b73"
     },
     "tokenColors": [
         {

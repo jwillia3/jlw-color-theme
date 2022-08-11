@@ -1,6 +1,7 @@
 "use strict";
 
 const fs = require('fs').promises;
+const { formatWithOptions } = require('util');
 const {
     bold,
     italic,
@@ -18,8 +19,18 @@ const red = '#733';
 const purple = '#958';
 const amber = '#b73';
 const grey = '#aaa';
+const darkGrey = '#444'
+const lightGrey = '#ddd';
 const white = '#eee';
 const offWhite = '#e8e8e0';
+const colourArray = [
+    blue,
+    green,
+    cyan,
+    red,
+    purple,
+    amber,
+];
 
 const generate = ({
     name,
@@ -30,14 +41,24 @@ const generate = ({
 }) => {
     const bg = dust ? offWhite : light ? white : black;
     const fg = light ? black : grey;
+    const faint = light ? lightGrey : darkGrey;
+
+    const bracketColours = colourArray.reduce((p, v, i) => ({
+        ...p,
+        ['editorBracketHighlight.foreground' + (i + 1)]: v
+    }), {});
 
     return {
         name: `Jerry ${name}`,
         colors: {
             'editor.background': bg,
             'editor.foreground': fg,
-            'editorCursor.foreground': red,
+            'editorLineNumber.foreground': fg,
+            'editor.lineHighlightBackground': faint,
+            'editorCursor.foreground': purple,
             'terminalCursor.foreground': red,
+            'terminal.background': bg,
+            'terminal.foreground': fg,
             'terminal.ansiBlack': black,
             'terminal.ansiBlue': blue,
             'terminal.ansiGreen': green,
@@ -55,6 +76,11 @@ const generate = ({
             'terminal.ansiBrightYellow': amber,
             'terminal.ansiBrightWhite': white,
             'editorIndentGuide.background': grey,
+            'widget.shadow': red,
+            'editorGroupHeader.tabsBorder': fg,
+            'tab.activeBackground': grey,
+            'tab.border': fg,
+            ...bracketColours,
         },
         tokenColors: tokenColors(
             // Standard
