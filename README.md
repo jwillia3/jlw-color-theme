@@ -1,9 +1,13 @@
 # Jerry's VSCode Color Themes
-## Light
-![Light](light.png)
+## Default
+![Light](img/default-light.png)
+![Light](img/default-dark.png)
 ## Dust
-![Dust](dust.png)
-## Dark
-![Dark](dark.png)
-## Colored Vars
-![Colored Vars](colored-vars.png)
+![Light](img/dust-light.png)
+![Light](img/dust-dark.png)
+## Contrast
+![Light](img/contrast-light.png)
+![Light](img/contrast-dark.png)
+## Blueprint
+![Light](img/blueprint-light.png)
+![Light](img/blueprint-dark.png)

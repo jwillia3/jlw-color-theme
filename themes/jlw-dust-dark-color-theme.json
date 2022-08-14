@@ -1,0 +1,194 @@
+{
+  "name": "JLW Dust Dark",
+  "colors": {
+    "editor.background": "#383830",
+    "editor.foreground": "#b8b8b0",
+    "editorLineNumber.foreground": "#484840",
+    "editor.lineHighlightBackground": "#484840",
+    "editorCursor.foreground": "#733",
+    "terminalCursor.foreground": "#733",
+    "terminal.background": "#383830",
+    "terminal.foreground": "#b8b8b0",
+    "terminal.ansiBlack": "#333",
+    "terminal.ansiBlue": "#25a",
+    "terminal.ansiGreen": "#595",
+    "terminal.ansiCyan": "#389",
+    "terminal.ansiRed": "#733",
+    "terminal.ansiMagenta": "#958",
+    "terminal.ansiYellow": "#b73",
+    "terminal.ansiWhite": "#aaa",
+    "terminal.ansiBrightBlack": "#333",
+    "terminal.ansiBrightBlue": "#25a",
+    "terminal.ansiBrightGreen": "#595",
+    "terminal.ansiBrightCyan": "#389",
+    "terminal.ansiBrightRed": "#733",
+    "terminal.ansiBrightMagenta": "#958",
+    "terminal.ansiBrightYellow": "#b73",
+    "terminal.ansiBrightWhite": "#eee",
+    "editorIndentGuide.background": "#484840",
+    "widget.shadow": "#733",
+    "editorGroupHeader.tabsBorder": "#b8b8b0",
+    "tab.activeBackground": "#585850",
+    "tab.border": "#b8b8b0",
+    "editorBracketHighlight.foreground1": "#585850",
+    "editorBracketHighlight.foreground2": "#585850",
+    "editorBracketHighlight.foreground3": "#585850",
+    "editorBracketHighlight.foreground4": "#585850",
+    "editorBracketHighlight.foreground5": "#585850",
+    "editorBracketHighlight.foreground6": "#585850"
+  },
+  "tokenColors": [
+    {
+      "scope": [
+        "variable"
+      ],
+      "settings": {
+        "fontStyle": ""
+      }
+    },
+    {
+      "scope": [
+        "entity.name.type"
+      ],
+      "settings": {
+        "foreground": "#25a",
+        "fontStyle": ""
+      }
+    },
+    {
+      "scope": [
+        "variable.parameter"
+      ],
+      "settings": {
+        "fontStyle": "italic"
+      }
+    },
+    {
+      "scope": [
+        "markup.heading"
+      ],
+      "settings": {
+        "fontStyle": "bold underline"
+      }
+    },
+    {
+      "scope": [
+        "markup.bold"
+      ],
+      "settings": {
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "scope": [
+        "markup.italic"
+      ],
+      "settings": {
+        "fontStyle": "italic"
+      }
+    },
+    {
+      "scope": [
+        "markup.underline"
+      ],
+      "settings": {
+        "fontStyle": "underline"
+      }
+    },
+    {
+      "scope": [
+        "comment",
+        "punctuation.definition.comment"
+      ],
+      "settings": {
+        "foreground": "#686860"
+      }
+    },
+    {
+      "scope": [
+        "punctuation",
+        "keyword.operator"
+      ],
+      "settings": {
+        "foreground": "#b8b8b0"
+      }
+    },
+    {
+      "scope": [
+        "variable",
+        "punctuation.definition.variable",
+        "punctuation.definition.annotation",
+        "entity.name.tag",
+        "markup.underline.link",
+        "markup.list"
+      ],
+      "settings": {
+        "foreground": "#958"
+      }
+    },
+    {
+      "scope": [
+        "constant",
+        "variable.language",
+        "string",
+        "punctuation.definition.string.begin",
+        "punctuation.definition.string.end",
+        "support.constant",
+        "entity.other.attribute-name",
+        "markup.quote",
+        "markup.inline.raw",
+        "markup.block.raw",
+        "markup.fenced_code.block"
+      ],
+      "settings": {
+        "foreground": "#b73"
+      }
+    },
+    {
+      "scope": [
+        "entity.name",
+        "support.module",
+        "support.class"
+      ],
+      "settings": {
+        "foreground": "#958",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "scope": [
+        "entity.name.function",
+        "support.function",
+        "entity.name.tag"
+      ],
+      "settings": {
+        "foreground": "#b8b8b0",
+        "fontStyle": "bold"
+      }
+    },
+    {
+      "scope": [
+        "keyword",
+        "punctuation.definition.keyword",
+        "storage.type",
+        "storage.modifier",
+        "support.type",
+        "entity.name.type",
+        "support.module.type"
+      ],
+      "settings": {
+        "foreground": "#25a"
+      }
+    },
+    {
+      "scope": [
+        "invalid",
+        "string.regexp",
+        "constant.character.escape"
+      ],
+      "settings": {
+        "foreground": "#733"
+      }
+    }
+  ]
+}

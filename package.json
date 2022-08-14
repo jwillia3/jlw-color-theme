@@ -1,9 +1,10 @@
 {
   "name": "jlw-color-theme",
   "displayName": "jlw-color-theme",
-  "description": "Jerry",
+  "description": "Jerry's Colour Themes",
+  "publisher": "Jerry Lee Williams Jr",
   "license": "MIT",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "engines": {
     "vscode": "^1.70.0"
   },
@@ -22,34 +23,44 @@
   "contributes": {
     "themes": [
       {
-        "label": "Jerry Light",
+        "label": "JLW Light",
         "uiTheme": "vs",
-        "path": "./themes/jlw-light-color-theme.json"
+        "path": "./themes/jlw-default-light-color-theme.json"
       },
       {
-        "label": "Jerry Dark",
+        "label": "JLW Dark",
         "uiTheme": "vs-dark",
-        "path": "./themes/jlw-dark-color-theme.json"
+        "path": "./themes/jlw-default-dark-color-theme.json"
       },
       {
-        "label": "Jerry Dust",
+        "label": "JLW Dust",
         "uiTheme": "vs",
-        "path": "./themes/jlw-dust-color-theme.json"
+        "path": "./themes/jlw-dust-light-color-theme.json"
       },
       {
-        "label": "Jerry Light (Colored Vars)",
-        "uiTheme": "vs",
-        "path": "./themes/jlw-light-colored-vars-color-theme.json"
-      },
-      {
-        "label": "Jerry Dark (Colored Vars)",
+        "label": "JLW Dark Dust",
         "uiTheme": "vs-dark",
-        "path": "./themes/jlw-dark-colored-vars-color-theme.json"
+        "path": "./themes/jlw-dust-dark-color-theme.json"
       },
       {
-        "label": "Jerry Dust (Colored Vars)",
+        "label": "JLW Contrast",
         "uiTheme": "vs",
-        "path": "./themes/jlw-dust-colored-vars-color-theme.json"
+        "path": "./themes/jlw-contrast-light-color-theme.json"
+      },
+      {
+        "label": "JLW Dark Contrast",
+        "uiTheme": "vs-dark",
+        "path": "./themes/jlw-contrast-dark-color-theme.json"
+      },
+      {
+        "label": "JLW Blueprint",
+        "uiTheme": "vs",
+        "path": "./themes/jlw-blueprint-light-color-theme.json"
+      },
+      {
+        "label": "JLW Dark Blueprint",
+        "uiTheme": "vs-dark",
+        "path": "./themes/jlw-blueprint-dark-color-theme.json"
       }
     ]
   },

@@ -1,7 +1,6 @@
 "use strict";
 
 const fs = require('fs').promises;
-const { formatWithOptions } = require('util');
 const {
     bold,
     italic,
@@ -10,171 +9,227 @@ const {
     tokenColors
 } = require('./dsl.js');
 
-// Palette
-const black = '#333';
-const blue = '#258';
-const green = '#575';
-const cyan = '#39a';
-const red = '#733';
-const purple = '#958';
-const amber = '#b73';
-const grey = '#aaa';
-const darkGrey = '#444'
-const lightGrey = '#ddd';
-const white = '#eee';
-const offWhite = '#e8e8e0';
-const colourArray = [
-    blue,
-    green,
-    cyan,
-    red,
-    purple,
-    amber,
+const defaultPalette = ['#333', '#25a', '#595', '#389', '#733', '#958', '#b73', '#aaa', '#eee']
+const schemes = [
+    {
+        name: 'Default',
+        palette: defaultPalette,
+        bases: ['#eee', '#ccc', '#bbb', '#aaa', '#666', '#555', '#444', '#333']
+    },
+    {
+        name: 'Contrast',
+        palette: ['#333', '#25c', '#595', '#38a', '#a33', '#958', '#b63', '#aaa', '#fff'],
+        bases: ['#fff', '#bbb', '#aaa', '#888', '#666', '#555', '#444', '#333']
+    },
+    {
+        name: 'Dust',
+        palette: defaultPalette,
+        bases: ['#e8e8e0', '#c8c8c0', '#b8b8b0', '#a8a8a0', '#686860', '#585850', '#484840', '#383830']
+    },
+    {
+        name: 'Blueprint',
+        palette: defaultPalette,
+        bases: ['#e8f0ff', '#cdf', '#bce', '#abd', '#002', '#013', '#124', '#203050']
+    },
 ];
 
 const generate = ({
     name,
-    light = true,
-    dust = false,
-    coloredVars = false,
-    italicParams = true
+    scheme: { palette, bases },
+    dark,
 }) => {
-    const bg = dust ? offWhite : light ? white : black;
-    const fg = light ? black : grey;
-    const faint = light ? lightGrey : darkGrey;
+    const [black, blue, green, cyan, red, magenta, yellow, grey, white] = palette;
+    const [base00, base01, base02, base03, base04, base05, base06, base07] =
+        dark
+            ? [...bases].reverse()
+            : bases;
+    const base08 = magenta;
+    const base09 = yellow;
+    const base0a = magenta;
+    const base0b = grey;
+    const base0c = grey;
+    const base0d = base05;
+    const base0e = blue;
+    const base0f = red;
 
-    const bracketColours = colourArray.reduce((p, v, i) => ({
-        ...p,
-        ['editorBracketHighlight.foreground' + (i + 1)]: v
-    }), {});
+    const bracketColours = new Array(6).fill(base02).reduce(
+        (prev, color, i) => ({
+            ...prev,
+            ['editorBracketHighlight.foreground' + (i + 1)]: color
+        }),
+        {});
 
     return {
-        name: `Jerry ${name}`,
+        name: `JLW ${name}`,
         colors: {
-            'editor.background': bg,
-            'editor.foreground': fg,
-            'editorLineNumber.foreground': fg,
-            'editor.lineHighlightBackground': faint,
-            'editorCursor.foreground': purple,
+            'editor.background': base00,
+            'editor.foreground': base05,
+            'editorLineNumber.foreground': base01,
+            'editor.lineHighlightBackground': base01,
+            'editorCursor.foreground': red,
             'terminalCursor.foreground': red,
-            'terminal.background': bg,
-            'terminal.foreground': fg,
+            'terminal.background': base00,
+            'terminal.foreground': base05,
             'terminal.ansiBlack': black,
             'terminal.ansiBlue': blue,
             'terminal.ansiGreen': green,
             'terminal.ansiCyan': cyan,
             'terminal.ansiRed': red,
-            'terminal.ansiMagenta': purple,
-            'terminal.ansiYellow': amber,
+            'terminal.ansiMagenta': magenta,
+            'terminal.ansiYellow': yellow,
             'terminal.ansiWhite': grey,
             'terminal.ansiBrightBlack': black,
             'terminal.ansiBrightBlue': blue,
             'terminal.ansiBrightGreen': green,
             'terminal.ansiBrightCyan': cyan,
             'terminal.ansiBrightRed': red,
-            'terminal.ansiBrightMagenta': purple,
-            'terminal.ansiBrightYellow': amber,
+            'terminal.ansiBrightMagenta': magenta,
+            'terminal.ansiBrightYellow': yellow,
             'terminal.ansiBrightWhite': white,
-            'editorIndentGuide.background': grey,
+            'editorIndentGuide.background': base01,
             'widget.shadow': red,
-            'editorGroupHeader.tabsBorder': fg,
-            'tab.activeBackground': grey,
-            'tab.border': fg,
+            'editorGroupHeader.tabsBorder': base05,
+            'tab.activeBackground': base02,
+            'tab.border': base05,
             ...bracketColours,
         },
         tokenColors: tokenColors(
-            // Standard
-            ['punctuation', fg],
-            ['comment',
-                'punctuation.definition.comment',
-                grey],
-            ['entity.name',
-                'support.module',
-                'support.class',
-                bold],
-            ['storage.type',
-                'storage.modifier',
-                'support.type',
-                'entity.name.type',
-                'support.module.type',
-                blue,
-                unstyled],
-            ['keyword',
-                'punctuation.definition.keyword',
-                blue],
-            ['keyword.operator', fg],
+            /*
+                `entity.name` over-applies bold so make these exceptions.
+             */
+            ['variable', unstyled],
+            ['entity.name.type', base0e, unstyled],
 
-            ['variable', fg, unstyled], // Reset scopes that are also entities
-            coloredVars && [
+            ['variable.parameter', italic],
+
+            ['markup.heading', bold, underline],
+            ['markup.bold', bold],
+            ['markup.italic', italic],
+            ['markup.underline', underline],
+
+            // Base16-Style Grouping
+            [base00],
+            [base01],
+            [base02],
+            [base03,
+                'comment',
+                'punctuation.definition.comment',
+            ],
+            [base04],
+            [base05,
+                'punctuation',
+                'keyword.operator',
+            ],
+            [base06],
+            [base07],
+            [base08,
                 'variable',
                 'punctuation.definition.variable',
                 'punctuation.definition.annotation',
-                purple],
-            italicParams &&
-            ['variable.parameter', italic],
-
-            ['constant',
+                'entity.name.tag',
+                'markup.underline.link',
+                'markup.list',
+            ],
+            [base09,
+                'constant',
                 'variable.language',
                 'string',
                 'punctuation.definition.string.begin',
                 'punctuation.definition.string.end',
                 'support.constant',
-                amber,
-                bold],
-            ['punctuation.section.interpolation.begin',
-                'punctuation.section.interpolation.end',
-                fg,
-                bold],
-            ['string.regexp', red, bold],
-            ['constant.character.escape', red, bold],
-            ['entity.name.function',
+                'entity.other.attribute-name',
+                'markup.quote',
+                'markup.inline.raw',
+                'markup.block.raw',
+                'markup.fenced_code.block',
+            ],
+            [base0a,
+                bold,
+                'entity.name',
+                'support.module',
+                'support.class',
+            ],
+            [base0d,
+                bold,
+                'entity.name.function',
                 'support.function',
-                bold],
-            ['invalid', red],
-
-            // HTML
-            ['entity.name.tag', blue],
-            ['entity.other.attribute-name', blue],
-            ['text.html', 'text.xml', purple],
-
-            // Markup
-            ['markup.heading', blue, bold, underline],
-            ['markup.list', italic],
-            ['markup.bold', bold],
-            ['markup.italic', italic],
-            ['markup.underline', underline],
-            ['markup.underline.link', blue, underline],
-            ['markup.quote', blue],
-            ['markup.raw.inline', purple],
-            ['markup.raw.block', blue],
+                'entity.name.tag',
+            ],
+            [base0e,
+                'keyword',
+                'punctuation.definition.keyword',
+                'storage.type',
+                'storage.modifier',
+                'support.type',
+                'entity.name.type',
+                'support.module.type',
+            ],
+            [base0f,
+                'invalid',
+                'string.regexp',
+                'constant.character.escape',
+            ],
         ),
     };
 };
 
+const generateSwatches = () => {
+    const outputColors = color =>
+        `    <div style='display:inline-block;width:48px;height:48px;background:${color}'>${color}</div>`;
+    const outputScheme = scheme => {
+        const style = `display: flex; padding: 16px 8px;background:${scheme.bases[0]}`;
+        const name = `<h1 style='color:${scheme.bases[5]};width:128px'>${scheme.name}</h1>`;
+        const body = [...scheme.bases, ...scheme.palette].map(outputColors).join('\n');
+        const names = ['black', 'blue', 'green', 'cyan', 'red', 'magenta', 'yellow', 'grey', 'white'];
+        const pal = scheme.palette;
+        const texts =
+            `
+            <div style='display:flex;flex-direction:column;width:64px'>
+                <code style=color:${scheme.bases[5]}>foreground</code>
+                ${names.map((id, i) => `<code style=color:${pal[i]}>${id}</code>`).join('\n')}
+            </div>
+            `
+        return `<div style='${style}'>${name}${texts}${body}</div>`;
+    }
+    const outputSchemes = () =>
+        '<style>body {font-family:monospaced;font-size:6pt}</style>' +
+        schemes.map(outputScheme).join('\n');
 
+    fs.writeFile('colors.html', outputSchemes());
+}
 
-const themes = [
-    { name: "Light" },
-    { name: "Dust", dust: true },
-    { name: "Dark", light: false },
-    { name: "Light (Colored Vars)", coloredVars: true },
-    { name: "Dust (Colored Vars)", dust: true, coloredVars: true },
-    { name: "Dark (Colored Vars)", light: false, coloredVars: true },
-];
+const generateFiles = () => {
+    const toFilename = (name) => {
+        const clean = name.replace(/ /g, '-').replace(/[()]/g, '').toLowerCase();
+        return `themes/jlw-${clean}-color-theme.json`;
+    }
 
-// Generate all files.
-fs.mkdir('themes', { recursive: true })
-    .then(() => {
+    const execute = () => {
+        for (const scheme of schemes) {
+            const paramsList = [
+                {
+                    name: `${scheme.name} Light`,
+                    scheme: scheme,
+                    dark: false,
+                },
+                {
+                    name: `${scheme.name} Dark`,
+                    scheme: scheme,
+                    dark: true,
+                },
+            ];
 
-        const toFilename = (name) => {
-            const clean = name.replace(/ /g, '-').replace(/[()]/g, '').toLowerCase();
-            return `themes/jlw-${clean}-color-theme.json`;
+            for (const params of paramsList) {
+                const filename = toFilename(params.name);
+                const json = JSON.stringify(generate(params), null, 2);
+                fs.writeFile(filename, json);
+            }
         }
+    };
 
-        const files = themes.map(settings => {
-            const json = JSON.stringify(generate(settings), null, 4);
-            return fs.writeFile(toFilename(settings.name), json);
-        });
+    fs.mkdir('themes', { recursive: true }).then(execute);
+}
 
-        Promise.all(files);
-    })
+
+generateFiles();
+generateSwatches();
