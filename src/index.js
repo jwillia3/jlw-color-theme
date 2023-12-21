@@ -27,9 +27,9 @@ const schemes = [
         bases: ['#e8e8e0', '#c8c8c0', '#b8b8b0', '#a8a8a0', '#686860', '#585850', '#484840', '#383830']
     },
     {
-        name: 'Blueprint',
-        palette: defaultPalette,
-        bases: ['#e8f0ff', '#cdf', '#bce', '#abd', '#002', '#013', '#124', '#203050']
+        name: 'Monochrome',
+        palette: ['#fff', '#333', '#333', '#333', '#333', '#333', '#333', '#333', '#fff'],
+        bases: ['#fff', '#bbb', '#aaa', '#888', '#666', '#555', '#444', '#333']
     },
 ];
 
@@ -46,13 +46,13 @@ const generate = ({
     const base08 = magenta;
     const base09 = yellow;
     const base0a = magenta;
-    const base0b = grey;
+    const base0b = red;
     const base0c = grey;
     const base0d = base05;
     const base0e = blue;
     const base0f = red;
 
-    const bracketColours = new Array(6).fill(base02).reduce(
+    const bracketColours = new Array(6).fill(base07).reduce(
         (prev, color, i) => ({
             ...prev,
             ['editorBracketHighlight.foreground' + (i + 1)]: color
@@ -111,10 +111,7 @@ const generate = ({
             [base00],
             [base01],
             [base02],
-            [base03,
-                'comment',
-                'punctuation.definition.comment',
-            ],
+            [base03],
             [base04],
             [base05,
                 'punctuation',
@@ -148,6 +145,10 @@ const generate = ({
                 'entity.name',
                 'support.module',
                 'support.class',
+            ],
+            [base0b,
+                'comment',
+                'punctuation.definition.comment',
             ],
             [base0d,
                 bold,

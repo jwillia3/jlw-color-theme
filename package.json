@@ -4,7 +4,7 @@
   "description": "Jerry's Colour Themes",
   "publisher": "Jerry Lee Williams Jr",
   "license": "MIT",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "engines": {
     "vscode": "^1.70.0"
   },
@@ -19,7 +19,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/jwillia3/jlw-color-theme"
-   },
+  },
   "contributes": {
     "themes": [
       {
@@ -53,14 +53,9 @@
         "path": "./themes/jlw-contrast-dark-color-theme.json"
       },
       {
-        "label": "JLW Blueprint",
+        "label": "JLW Monochrome",
         "uiTheme": "vs",
-        "path": "./themes/jlw-blueprint-light-color-theme.json"
-      },
-      {
-        "label": "JLW Dark Blueprint",
-        "uiTheme": "vs-dark",
-        "path": "./themes/jlw-blueprint-dark-color-theme.json"
+        "path": "./themes/jlw-monochrome-light-color-theme.json"
       }
     ]
   },

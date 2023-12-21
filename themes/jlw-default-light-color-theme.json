@@ -30,12 +30,12 @@
     "editorGroupHeader.tabsBorder": "#555",
     "tab.activeBackground": "#bbb",
     "tab.border": "#555",
-    "editorBracketHighlight.foreground1": "#bbb",
-    "editorBracketHighlight.foreground2": "#bbb",
-    "editorBracketHighlight.foreground3": "#bbb",
-    "editorBracketHighlight.foreground4": "#bbb",
-    "editorBracketHighlight.foreground5": "#bbb",
-    "editorBracketHighlight.foreground6": "#bbb"
+    "editorBracketHighlight.foreground1": "#333",
+    "editorBracketHighlight.foreground2": "#333",
+    "editorBracketHighlight.foreground3": "#333",
+    "editorBracketHighlight.foreground4": "#333",
+    "editorBracketHighlight.foreground5": "#333",
+    "editorBracketHighlight.foreground6": "#333"
   },
   "tokenColors": [
     {
@@ -97,15 +97,6 @@
     },
     {
       "scope": [
-        "comment",
-        "punctuation.definition.comment"
-      ],
-      "settings": {
-        "foreground": "#aaa"
-      }
-    },
-    {
-      "scope": [
         "punctuation",
         "keyword.operator"
       ],
@@ -153,6 +144,15 @@
       "settings": {
         "foreground": "#958",
         "fontStyle": "bold"
+      }
+    },
+    {
+      "scope": [
+        "comment",
+        "punctuation.definition.comment"
+      ],
+      "settings": {
+        "foreground": "#733"
       }
     },
     {
